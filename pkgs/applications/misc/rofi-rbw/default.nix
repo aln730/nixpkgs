@@ -43,7 +43,10 @@ buildPythonApplication rec {
     xdotool
   ];
 
-  propagatedBuildInputs = [ configargparse ];
+  propagatedBuildInputs = [ configargparse rbw ]
+  ++ lib.optionals waylandSupport [ wtype ]
+  ++ lib.optionals x11Support [ xdotool ];
+
 
   pythonImportsCheck = [ "rofi_rbw" ];
 
